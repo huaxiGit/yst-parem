@@ -24,7 +24,7 @@ public class code {
     public void eee(){
 
         //System.out.println( R.SUCCESS(CodeEnum.FAIL,"dfsdfdsffffff"));
-        System.out.println(R.ok("ddddd"));
+       // System.out.println(R.ok("ddddd"));
         logger.info("我要要查看log4");
     }
 }

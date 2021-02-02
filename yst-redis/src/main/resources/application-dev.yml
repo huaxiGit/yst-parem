@@ -1,0 +1,109 @@
+#开发环境
+server:
+  port: 8011
+web:
+  #upload-path: D:/data/
+  #upload-url: D:/
+  #upload: D:/multiuse/logo/
+  #access-path: upload/
+
+  #liunx路径
+  upload-path: /home/data/
+  upload-url: /
+  upload: /home/multiuse/logo/
+  access-path: upload/
+
+
+#微信公众号
+wechat:
+  APPID: wx85fe53b65b44c4da
+  AppSecret: a6d25779f96b755c6c4a743da6483c1f
+  templateid:
+    Equipment-alarm-reminder: 9IjRtKNU9UlX7GAr5AwsNnIm3GlDuS8B4S-dU10YWqY   #设备报警提醒
+    Equipment-warning-reminder: C5qeXjQLiRljmMiGNL-i5oDg1rrBln4J0L_Xw0rJKvE    #设备预警提醒
+    Equipment-failure-warning: pnGGFGZ7iS1jLzJ3Ig2x-onHNQuJbdkUmKl3Tl_53Wo   #设备故障提醒
+
+
+spring:
+  # 配置数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://36.112.118.18:3306/configuration?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=GMT%2B8
+    username: yst_g
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+# mybatis-plus相关配置
+
+  #设置上传APP的大小限制
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${web.upload-path},file:${web.upload}
+  servlet:
+    multipart:
+      enabled: true #是否启用http上传处理
+      max-request-size: 500MB #最大请求文件的大小
+      max-file-size: 400MB #设置单个文件最大长度
+      file-size-threshold: 30MB #当文件达到多少时进行磁盘写入
+
+
+   #设置上传APP的大小限制
+
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+
+
+# mybatis-plus相关配置
+mybatis-plus:
+  # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
+  mapper-locations: classpath:**/mapper/*.xml
+  # 以下配置均有默认值,可以不设置
+  global-config:
+    db-config:
+      #主键类型  auto:"数据库ID自增" 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+      id-type: auto
+      #字段策略 IGNORED:"忽略判断"  NOT_NULL:"非 NULL 判断")  NOT_EMPTY:"非空判断"
+      field-strategy: NOT_EMPTY
+      #数据库类型
+      db-type: MYSQL
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    call-setters-on-nulls: true
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #type-aliases-package: cn.souhui.dal.model
+hikari:
+  connection-test-query: SELECT 1 FROM DUAL
+  minimum-idle: 5
+  maximum-pool-size: 10
+  idle-timeout: 300000
+  max-lifetime: 1200000
+  auto-commit: true
+  pool-name: jpush
+
+
+  logging:
+    path: D:/images/log #日志文件路径
+    file: ims.log #日志文件名称
+
+  config: classpath:logback-spring.xml
+
+
+
+swagger:
+  enable: true
+logging:
+  level:
+    root: INFO
+swgger:
+  enabled: true
+  title: 测试
+  description:
+  version: 1.0
+  license: Apache License, Version 2.0
+  licenseUrl: https://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfServiceUrl:

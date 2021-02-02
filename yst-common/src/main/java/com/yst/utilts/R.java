@@ -40,12 +40,12 @@ public class R<T> {
         this.success=true;
         this.data = data;
     }
-    public static<T> R ok(T data) {
+    public static<T> R ok() {
         R r=new R();
         r.setSuccess(true);
         r.setCode(CodeEnum.SUCCESS.getCode());
         r.setMessage(CodeEnum.SUCCESS.getMsg());
-        r.setData(data);
+
         return r;
     }
     //失败静态方法

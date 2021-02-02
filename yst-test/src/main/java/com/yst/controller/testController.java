@@ -1,5 +1,6 @@
 package com.yst.controller;
 
+import com.yst.service.TestService;
 import com.yst.utilts.R;
 import com.yst.utilts.redis.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class testController {
     @Autowired
+    private TestService testService;
+
+    @Autowired
     private RedisUtils redisUtils;
     @GetMapping("/aa")
     public R sss(){
         redisUtils.set("3ee","dffff");
-        return R.ok("成功");
+        return R.ok().message("成功");
     }
+
 }

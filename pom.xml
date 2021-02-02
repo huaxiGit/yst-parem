@@ -11,6 +11,9 @@
     <modules>
         <module>yst-common</module>
         <module>yst-test</module>
+        <module>yst-shiro</module>
+        <module>yst-redis</module>
+        <module>yst-rabbitmq</module>
     </modules>
 
     <parent>
