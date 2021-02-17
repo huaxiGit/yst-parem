@@ -82,6 +82,7 @@
             <artifactId>java-jwt</artifactId>
             <version>3.4.0</version>
         </dependency>
+        <!--它简化代码写法-->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
