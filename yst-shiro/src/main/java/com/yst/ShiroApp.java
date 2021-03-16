@@ -4,7 +4,7 @@ package com.yst;
  * @author zhanghuaxi
  * @title: ShiroApp
  * @projectName yst-parem
- * @description: TODO
+ * @description: TODO         // 学习网站  https://blog.csdn.net/leilei1366615/article/details/99571695?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&dist_request_id=&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control
  * @date 2021/1/26下午8:31
  */
 public class ShiroApp {

@@ -2,11 +2,14 @@ package com.huaxi.lambda;
 
 import com.google.common.collect.Lists;
 
+import com.google.common.collect.Maps;
 import org.apache.tomcat.jni.Status;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.platform.engine.TestExecutionResult;
 
 import java.lang.reflect.Array;
+import java.text.MessageFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -20,6 +23,20 @@ import java.util.stream.Stream;
  * @date 2021-02-16 16:30:16
  */
 public class lambdaTest {
+
+    /**
+     *
+     * @BeforeClass：针对所有测试，只执行一次，且必须为static void
+     * @Before：初始化方法，执行当前测试类的每个测试方法前执行。
+     * @Test：测试方法，在这里可以测试期望异常和超时时间
+     * @After：释放资源，执行当前测试类的每个测试方法后执行
+     * @AfterClass：针对所有测试，只执行一次，且必须为static void
+     * @Ignore：忽略的测试方法（只在测试类的时候生效，单独执行该测试方法无效）
+     * @RunWith:可以更改测试运行器 ，缺省值 org.junit.runner.Runner
+
+     */
+
+
 
     @Test
     public void test(){
@@ -134,5 +151,106 @@ public class lambdaTest {
                 .collect(Collectors.toList());
         collect.forEach(System.out::println);
     }
+    @Test
+    public void dsdd(){
+        String aa="1233$s3333%s33";
+        String format = String.format(aa,"ee","ww");
+        System.out.println(format);
+    }
+
+    @Test
+    public void sdf(){
+
+
+    }
+
+    /**
+     *  两个for
+     */
+    @Test
+    public void sdff(){
+        HashMap<String, String> map = Maps.newHashMap(),
+                map2 = Maps.newHashMap();
+        map.put("1", "张三");
+        map.put("2", "李四");
+        map.put("3", "王五");
+        map2.put("4", "德玛西亚");
+        map2.put("5", "索瑞玛");
+        map2.put("6", "艾欧尼亚");
+        ArrayList<Map<String,String>> list= org.assertj.core.util.Lists.newArrayList();
+        list.add(map);
+        list.add(map2);
+            list.stream().forEach(
+                    ma->{
+                        ma.forEach((k,v)-> System.out.println(v));
+                    }
+            );
+         list.forEach(map1 -> map1.forEach((k,v)-> System.out.println(k+"----"+v)));
+
+
+    }
+
+    HashMap<String, String> map = Maps.newHashMap(),
+            map2 = Maps.newHashMap();
+    List<String> list=Lists.newArrayList(),
+                list2=Lists.newArrayList(),
+                list3=Lists.newArrayList();
+    @Before
+    public void kais(){
+        list.add("2");
+        list.add("3");
+        list.add("4");
+        list.add("7");
+        list2.add("2");
+        list2.add("8");
+        list2.add("9");
+        list2.add("10");
+        list3.add("9");
+        list3.add("10");
+
+        map.put("1", "张三");
+        map.put("2", "李四");
+        map.put("3", "王五");
+        map2.put("4", "德玛西亚");
+        map2.put("5", "索瑞玛");
+        map2.put("6", "艾欧尼亚");
+    }
+    @Test
+    public void sdffss(){
+        for (int i=0;i<list.size();i++){
+            for (int j=0;j<list2.size();j++){
+                if (Objects.equals(list.get(i),list2.get(j))){
+                    System.out.println(list2.get(j));
+                    break;
+                }
+            }
+        }
+    }
+    @Test
+    public void sdffs(){
+        map.forEach((k,v)->{
+            System.out.println(k+"------------"+v);
+        });
+        list.stream().forEach(
+                list->{
+                    list2.stream().filter(list2->Objects.equals(list,list2))
+                            .forEach(r->{
+                                if(r.isEmpty()){
+                                    System.out.println(r);
+                                    return;
+                                }
+                                    }
+
+                                    );
+                    System.out.println(list);
+                }
+        );
+    }
+    @Test
+    public void sdffsss(){
+
+    }
+
+
 
 }

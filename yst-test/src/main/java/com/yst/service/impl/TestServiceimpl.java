@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TestServiceimpl implements TestService {
-    @Autowired
+    //@Autowired
     private TestMapper testMapper;
 
 }

@@ -14,7 +14,7 @@ import java.util.Map;
  * @author zhanghuaxi
  * @title: GlobalExceptionHandler
  * @projectName yst-parem
- * @description: TODO
+ * @description: TODO     学习异常抛出 https://blog.csdn.net/sinat_33151213/article/details/80805276?utm_medium=distribute.pc_relevant.none-task-blog-OPENSEARCH-2.control&dist_request_id=2f0be711-ec9c-4069-a2f9-a700fd07ce09&depth_1-utm_source=distribute.pc_relevant.none-task-blog-OPENSEARCH-2.control
  * @date 2021/1/24下午5:31
  */
 @ControllerAdvice

@@ -301,14 +301,6 @@ public class ArrayListTest {
     /**
      * 不可变集合
      */
-    @Test
-    public void unmodifiable() {
-        List list = new ArrayList(Arrays.asList(4,3,3,4,5,6));//缓存不可变配置
-        List modilist = Collections.unmodifiableList(list);//只读
-        modilist.set(0,1);
-        //modilist.add(5,1);
-        list.set(0,1);
-        System.out.println(modilist.get(0));
-    }
+
 
 }

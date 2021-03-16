@@ -1,6 +1,7 @@
 package com.huaxi.lambda;
 
 import com.google.common.collect.Maps;
+import lombok.Data;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
@@ -351,10 +352,120 @@ public class LambdaTest1 {
 
     }
 
+    /**
+     * map 自定那个输出
+     */
+    @Test
+    public void test181(){
+        List<Room> roomList=Lists.newArrayList(
+                new Room(1,23,45),
+                new Room(2,27,47),
+                new Room(3,29,46)
+        );
+        Integer aa=34;
+        //roomList.stream().filter(room ->room.getHigh()==2).forEach(System.out::println);
+        roomList.stream().filter(obj->obj.getHigh()!=2).map(obj->obj.getHigh()).collect(Collectors.toList()).forEach(System.out::println);
+
+        String collect = roomList.stream()
+                .filter(obj -> obj.getWidth() != null)
+                .map(Room::getHigh)
+                .map(x -> String.valueOf(x))
+                .collect(Collectors.joining(","));
+        System.out.println(collect);
+        //filter 判断
+        roomList.stream()
+                .filter(obj -> obj.getWidth()!=null)
+                .filter(obj-> obj.getLength()!=45)
+                .map(Room::getLength).collect(Collectors.toList()).forEach(System.out::println);
+
+        //map的遍历
+        Map maps = new HashMap();
+        maps.put(1, "test1");
+        maps.put(2, "test2");
+        maps.forEach((k, v) -> System.out.println("Key : " + k + " Value : " + v));
+
+
+        // roomList.stream().map(room -> room.getHigh()).forEach( System.out::println);
+    }
+
+    /**
+     *  两个for循环
+     */
+    @Test
+    public void sadfsdds(){
+        Set<String> trackNames = new HashSet<>();
+        List<Users> albums=new ArrayList<>();
+
+        albums.stream()
+                .forEach(
+                        ab ->{
+                            ab.getTrackNames().stream()
+                                    .forEach(track->{
+                                        if(track.isEmpty()){
+                                            track.getBytes();
+
+                                        }
+                                            }
+                                    );
+                        }
+                );
+
+
+    }
+
+    @Test
+    public void sdfsdf(List<Users> albums){
+        Set<String> trackNames = new HashSet<>();
+
+        albums.stream()
+                .flatMap(ab -> ab.getTrackNames().stream())
+                .filter(track -> track.isEmpty())
+                .map(track->track)
+                .forEach(name ->trackNames.add(name));
+
+
+
+    }
+
+    @Data
+    class Album{
+        private String name;
+        private List<Track> trackList;
+    }
+    @Data
+    class Track{
+        private Long length;
+        private String name;
+    }
+
+
+
+        public static Set<String> findLongTracks4(List<Album> albums){
+            Set<String> trackNames = new HashSet<>();
+            albums.stream()
+                    .flatMap(album -> album.getTrackList().stream())
+                    .filter(track -> track.getLength() > 60)
+                    .map(track -> track.getName())
+                    .forEach(name ->trackNames.add(name));
+            return  trackNames;
+        }
+
+        public static Set<String> findLongTracks5(List<Album> albums){
+            return albums.stream()
+                    .flatMap(album -> album.getTrackList().stream())
+                    .filter(track -> track.getLength() > 60)
+                    .map(track -> track.getName())
+                    .collect(Collectors.toSet());
+        }
+
+
+
+
 
     /**
      * 分组分片  https://www.cnblogs.com/jimoer/p/10995574.html
      */
+
 
 
 }
